@@ -56,6 +56,8 @@ public class CustomerAccountManager {
 	protected void deposit(Customer customer, Double amount) {
 		if (amount <= 0.0) {
 			throw new IllegalArgumentException("Amount must be a positive value.");
+		}else if ( amount.isNaN()) {
+			throw new NullPointerException("Amount must be a positive number.");
 		}
 		customers.put(customer, customers.containsKey(customer) ? customers.get(customer) + amount : amount);
 
@@ -69,6 +71,8 @@ public class CustomerAccountManager {
 	protected void withdraw(Customer customer, Double amount) {
 		if (amount > customers.get(customer)) {
 			throw new IllegalArgumentException("Amount exceeds the available limit.");
+		}else if ( amount.isNaN()) {
+			throw new NullPointerException("Amount must be a positive number.");
 		}
 		customers.put(customer, customers.get(customer) - amount);
 

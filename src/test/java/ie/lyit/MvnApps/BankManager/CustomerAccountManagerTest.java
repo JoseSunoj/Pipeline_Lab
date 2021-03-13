@@ -163,6 +163,17 @@ public class CustomerAccountManagerTest {
 		manager.deposit(aCustomer, 1000.0);
 		assertEquals(1000.0, manager.customers.get(aCustomer));
 	}
+	/**
+	 * Test method-3 for
+	 * {@link ie.lyit.MvnApps.BankManager.CustomerAccountManager#deposit(ie.lyit.MvnApps.BankManager.Customer, java.lang.Double)}.
+	 */
+	@Test
+	@DisplayName("Should not allow deposit operation for amount is not a number.")
+	public void testDepositTwo() {
+		Assertions.assertThrows(NullPointerException.class, () -> {
+			manager.deposit(aCustomer, null);
+		});
+	}
 
 	/**
 	 * Test method-1 for
@@ -188,6 +199,20 @@ public class CustomerAccountManagerTest {
 		assertTrue(manager.customers.get(aCustomer) == 1000.0);
 		manager.withdraw(aCustomer, 1000.0);
 		assertEquals(0.0, manager.customers.get(aCustomer));
+
+	}
+	/**
+	 * Test method-3 for
+	 * {@link ie.lyit.MvnApps.BankManager.CustomerAccountManager#withdraw(ie.lyit.MvnApps.BankManager.Customer, java.lang.Double)}.
+	 */
+	@Test
+	@DisplayName("Should allow withdraw operation for amount upto available value.")
+	public void testWithdrawTwo() {
+		manager.deposit(aCustomer, 1000.0);
+		assertTrue(manager.customers.get(aCustomer) == 1000.0);
+		Assertions.assertThrows(NullPointerException.class, () -> {
+			manager.withdraw(aCustomer, null);
+		});
 
 	}
 
