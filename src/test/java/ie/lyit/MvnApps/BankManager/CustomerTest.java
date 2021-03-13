@@ -25,7 +25,7 @@ import org.junit.jupiter.params.provider.CsvSource;
  */
 public class CustomerTest {
 
-	private Customer customer;
+	private static Customer customer;
 
 	/**
 	 * @throws java.lang.Exception
@@ -33,6 +33,7 @@ public class CustomerTest {
 	@BeforeAll
 	public static void setUpBeforeClass() throws Exception {
 		System.out.println("Test Begins for Customer Calss.");
+		customer = new Customer();
 	}
 
 	/**

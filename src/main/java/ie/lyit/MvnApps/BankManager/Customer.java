@@ -14,6 +14,13 @@ public class Customer {
 	private String acNumber;
 
 	/**
+	 * empty constructor
+	 */
+	public Customer() {
+		super();
+	}
+
+	/**
 	 * @param name     holds the name of the customer
 	 * @param acNumber holds the account number
 	 */
@@ -68,7 +75,7 @@ public class Customer {
 		if (this.acNumber.isBlank()) {
 			throw new RuntimeException("Account Number shuold not be empty.");
 		}
-		if (this.acNumber.length()!= 8) {
+		if (this.acNumber.length() != 8) {
 			throw new RuntimeException("Account Number shuold be of length 8.");
 		}
 		if (!this.acNumber.matches("\\d+")) {

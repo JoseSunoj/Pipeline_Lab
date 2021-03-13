@@ -28,7 +28,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class CustomerAccountManagerTest {
 
 	private CustomerAccountManager manager;
-	private Customer aCustomer;
+	private static Customer aCustomer;
 
 	/**
 	 * @throws java.lang.Exception
@@ -36,7 +36,7 @@ public class CustomerAccountManagerTest {
 	@BeforeAll
 	public static void setUpBeforeClass() throws Exception {
 		System.out.println("Begins Tests for CustomerAccountManager.");
-
+		aCustomer = new Customer();
 	}
 
 	/**
