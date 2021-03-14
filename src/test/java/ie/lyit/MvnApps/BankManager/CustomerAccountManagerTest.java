@@ -156,10 +156,11 @@ public class CustomerAccountManagerTest {
 	/**
 	 * Test method-2 for
 	 * {@link ie.lyit.MvnApps.BankManager.CustomerAccountManager#deposit(ie.lyit.MvnApps.BankManager.Customer, java.lang.Double)}.
+	 * @throws Exception 
 	 */
 	@Test
 	@DisplayName("Should allow deposit operation for amount more than 0.")
-	public void testDepositOne() {
+	public void testDepositOne() throws Exception {
 		manager.deposit(aCustomer, 1000.0);
 		assertEquals(1000.0, manager.customers.get(aCustomer));
 	}
@@ -170,7 +171,7 @@ public class CustomerAccountManagerTest {
 	@Test
 	@DisplayName("Should not allow deposit operation for amount is not a number.")
 	public void testDepositTwo() {
-		Assertions.assertThrows(NullPointerException.class, () -> {
+		Assertions.assertThrows(Exception.class, () -> {
 			manager.deposit(aCustomer, null);
 		});
 	}
@@ -178,10 +179,11 @@ public class CustomerAccountManagerTest {
 	/**
 	 * Test method-1 for
 	 * {@link ie.lyit.MvnApps.BankManager.CustomerAccountManager#withdraw(ie.lyit.MvnApps.BankManager.Customer, java.lang.Double)}.
+	 * @throws Exception 
 	 */
 	@Test
 	@DisplayName("Should not allow withdraw operation for amount more than available value.")
-	public void testWithdraw() {
+	public void testWithdraw() throws Exception {
 		manager.deposit(aCustomer, 1000.0);
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			manager.withdraw(aCustomer, 1001.0);
@@ -191,10 +193,11 @@ public class CustomerAccountManagerTest {
 	/**
 	 * Test method-2 for
 	 * {@link ie.lyit.MvnApps.BankManager.CustomerAccountManager#withdraw(ie.lyit.MvnApps.BankManager.Customer, java.lang.Double)}.
+	 * @throws Exception 
 	 */
 	@Test
 	@DisplayName("Should allow withdraw operation for amount upto available value.")
-	public void testWithdrawOne() {
+	public void testWithdrawOne() throws Exception {
 		manager.deposit(aCustomer, 1000.0);
 		assertTrue(manager.customers.get(aCustomer) == 1000.0);
 		manager.withdraw(aCustomer, 1000.0);
@@ -204,10 +207,11 @@ public class CustomerAccountManagerTest {
 	/**
 	 * Test method-3 for
 	 * {@link ie.lyit.MvnApps.BankManager.CustomerAccountManager#withdraw(ie.lyit.MvnApps.BankManager.Customer, java.lang.Double)}.
+	 * @throws Exception 
 	 */
 	@Test
 	@DisplayName("Should allow withdraw operation for amount upto available value.")
-	public void testWithdrawTwo() {
+	public void testWithdrawTwo() throws Exception {
 		manager.deposit(aCustomer, 1000.0);
 		assertTrue(manager.customers.get(aCustomer) == 1000.0);
 		Assertions.assertThrows(NullPointerException.class, () -> {
@@ -219,10 +223,11 @@ public class CustomerAccountManagerTest {
 	/**
 	 * Test method for
 	 * {@link ie.lyit.MvnApps.BankManager.CustomerAccountManager#getBalanceInfo(ie.lyit.MvnApps.BankManager.Customer)}.
+	 * @throws Exception 
 	 */
 
 	@Test
-	public void testGetBalanceInfo() {
+	public void testGetBalanceInfo() throws Exception {
 		manager.deposit(aCustomer, 100.0);
 		assertTrue(manager.getBalanceInfo(aCustomer) == 100.0);
 		manager.withdraw(aCustomer, 100.0);

@@ -52,12 +52,13 @@ public class CustomerAccountManager {
 	 * 
 	 * @param customer holds the customer object
 	 * @param amount   holds an amount to deposit
+	 * @throws Exception 
 	 */
-	protected void deposit(Customer customer, Double amount) {
+	protected void deposit(Customer customer, Double amount) throws Exception {
 		if (amount <= 0.0) {
 			throw new IllegalArgumentException("Amount must be a positive value.");
 		}else if ( amount.isNaN()) {
-			throw new NullPointerException("Amount must be a positive number.");
+			throw new Exception("Amount must be a positive number.");
 		}
 		customers.put(customer, customers.containsKey(customer) ? customers.get(customer) + amount : amount);
 
@@ -67,12 +68,13 @@ public class CustomerAccountManager {
 	 * 
 	 * @param customer holds the customer object
 	 * @param amount   holds an amount to withdraw
+	 * @throws Exception 
 	 */
-	protected void withdraw(Customer customer, Double amount) {
+	protected void withdraw(Customer customer, Double amount) throws Exception {
 		if (amount > customers.get(customer)) {
 			throw new IllegalArgumentException("Amount exceeds the available limit.");
 		}else if ( amount.isNaN()) {
-			throw new NullPointerException("Amount must be a positive number.");
+			throw new Exception("Amount must be a positive number.");
 		}
 		customers.put(customer, customers.get(customer) - amount);
 
