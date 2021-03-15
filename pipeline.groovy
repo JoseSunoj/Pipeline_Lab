@@ -21,11 +21,11 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
+        stage('Deploy - Staging') {
             steps {
-                echo 'deploying'
-            } 
-            
+                sh './deploy staging'
+                sh './run-smoke-tests'
+            }
         }
     }
     post {
