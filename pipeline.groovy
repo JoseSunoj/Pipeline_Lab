@@ -28,5 +28,12 @@ pipeline {
             
         }
     }
+    post {
+        failure {
+            mail to: 'L00162972@student.lyit.ie',
+                subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                body: "Something is wrong with ${env.BUILD_URL}"
+        }
+    }
 
 }
